@@ -1,0 +1,87 @@
+---
+// Contact form — submissions handled by Netlify Forms.
+// The form is detected at deploy time by Netlify's build bot from the static
+// HTML output (data-netlify + name="contact"). The honeypot field traps bots.
+// On submit, Netlify redirects to /thank-you/.
+---
+<section class="section section--dark" id="contact">
+  <div class="container">
+    <div class="contact">
+      <div class="contact__side">
+        <div class="eyebrow">05 · Get in touch</div>
+        <h2>Send us a <span class="accent">message.</span></h2>
+
+        <div class="contact__info">
+          <div class="contact__info-item">
+            <span class="label-mono">Primary contact</span>
+            <span>Luke Monroe — Founder &amp; President</span>
+          </div>
+          <div class="contact__info-item">
+            <span class="label-mono">Phone</span>
+            <a href="tel:7073313121">707-331-3121</a>
+          </div>
+          <div class="contact__info-item">
+            <span class="label-mono">Mailing address</span>
+            <span>12697 Graton Rd., Sebastopol, CA 95472</span>
+          </div>
+          <div class="contact__info-item">
+            <span class="label-mono">Parent organization</span>
+            <a href="https://castrategicsolutions.org" target="_blank" rel="noreferrer">
+              CaStrategicSolutions.org ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <form
+        class="form"
+        name="contact"
+        method="POST"
+        action="/thank-you/"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p hidden>
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
+
+        <div class="form__row--split">
+          <div>
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" required placeholder="Jane Diaz" />
+          </div>
+          <div>
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" required placeholder="jane@example.org" />
+          </div>
+        </div>
+
+        <div class="form__row">
+          <label for="f-topic">I'm interested in…</label>
+          <select id="f-topic" name="topic" required>
+            <option value="">Select a topic</option>
+            <option value="buying">Buying a property</option>
+            <option value="partner">Partnership / collaboration</option>
+            <option value="sb1079">Learning about SB 1079</option>
+            <option value="grants">Grants &amp; community investment</option>
+            <option value="lead">Property lead (foreclosure tip)</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form__row">
+          <label for="f-msg">Message</label>
+          <textarea id="f-msg" name="message" rows="4" required placeholder="Tell us what you're working on."></textarea>
+        </div>
+
+        <div class="form__actions">
+          <span class="form__note">Luke will be in touch shortly.</span>
+          <button type="submit" class="btn btn--gold">
+            Send message <span class="arrow">→</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

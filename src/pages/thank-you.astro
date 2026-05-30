@@ -1,0 +1,31 @@
+---
+// Post-submit destination for the Netlify Forms contact form.
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base
+  title="Message received — Robin Hood Homes"
+  description="Thanks — Luke will be in touch shortly."
+  url="https://robinhoodhomes.org/thank-you/"
+>
+  <Nav />
+  <main>
+    <section class="section section--soft" style="padding-top: 96px;">
+      <div class="container container--narrow">
+        <div class="eyebrow">Message received</div>
+        <h1>Thanks — Luke will be in touch shortly.</h1>
+        <p class="lead">
+          We've received your message. If your inquiry concerns an active match-window
+          property, please call <a href="tel:7073313121">707-331-3121</a> — clocks don't wait.
+        </p>
+        <div style="margin-top: 32px;">
+          <a class="btn btn--primary" href="/">
+            Back to the site <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

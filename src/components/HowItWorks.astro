@@ -1,0 +1,71 @@
+---
+// "How it works" — SB 1079 explainer card + 5-step acquisition process.
+const STEPS = [
+  {
+    n: '01',
+    title: 'We monitor foreclosure auctions.',
+    body: 'Our team tracks trustee sale notices and auction results across California, identifying properties where we can intervene through SB 1079.',
+  },
+  {
+    n: '02',
+    title: 'We exercise our SB 1079 rights.',
+    body: "After a property sells at auction, Robin Hood Homes has 15 days to submit a Notice of Intent. From there, 30 more days to deliver a cashier's check exceeding the winning bid — 45 days total.",
+  },
+  {
+    n: '03',
+    title: 'We record a deed restriction.',
+    body: 'Every home is recorded with a 30-year affordable housing covenant — legally binding the property to affordable use for three decades, regardless of future ownership.',
+  },
+  {
+    n: '04',
+    title: 'We fix what needs fixing.',
+    body: 'Some need a $200,000+ gut renovation. Others just need a for-sale sign in the yard. Either way, when work needs doing we hire local — putting good people to work fixing up their own communities.',
+  },
+  {
+    n: '05',
+    title: 'Families move in. Profits cycle back.',
+    body: 'We sell or rent to qualified low- and moderate-income households. Any proceeds return to Strategic Solutions, Inc. and are reinvested into Sonoma County grants, housing, and community programs.',
+  },
+];
+---
+<section class="section section--dark" id="how">
+  <div class="container">
+    <div class="how__top">
+      <div class="how__intro">
+        <div class="eyebrow">02 · How it works</div>
+        <h2>From foreclosure<br />to <span class="accent">forever home.</span></h2>
+        <p>
+          California's SB 1079 — the Homes for Homeowners, Not Corporations Act — created
+          a powerful tool for mission-driven housing buyers. We use it to redirect foreclosed
+          homes away from institutional investors and into the hands of families who need them.
+        </p>
+      </div>
+
+      <div class="window">
+        <div class="window__head">
+          <span class="window__tag">SB 1079 · Signed 2020</span>
+          <span class="window__law">CA Civ. Code §2924m</span>
+        </div>
+        <div class="window__days tabular">
+          45<small>days from auction.<br /><span style="color:var(--rhh-on-deep)">15 to file. 30 to fund.</span></small>
+        </div>
+        <div class="window__progress" aria-hidden="true"></div>
+        <p class="window__caption">
+          Signed in 2020 to curb bulk-buying of foreclosed homes by institutional investors —
+          giving mission-driven housing entities like Robin Hood Homes a post-auction window
+          to match the winning bid and take the property instead.
+        </p>
+      </div>
+    </div>
+
+    <div class="steps">
+      {STEPS.map((s) => (
+        <div class="step">
+          <div class="step__num">{s.n}</div>
+          <h4 class="step__title">{s.title}</h4>
+          <p class="step__body">{s.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+// "Same game. Different outcome." — the 4-pillar manifesto explaining
+// why RHH is a for-profit subsidiary of a nonprofit parent.
+const PILLARS = [
+  {
+    n: 'i',
+    title: 'We Play to Win.',
+    body: 'Robin Hood Homes is built to be profitable. We identify post-foreclosure opportunities, move fast through SB 1079, and maximize returns — because the more we make, the more we can put back into the community.',
+  },
+  {
+    n: 'ii',
+    title: "One House Isn't the Answer.",
+    body: 'Individual deed-restricted homes are a start, not a solution. Our goal is to use flip proceeds to fund permanently affordable housing communities — developments that move the needle for West Sonoma County at scale.',
+  },
+  {
+    n: 'iii',
+    title: 'Winnings Stay Local.',
+    body: "Where most investors extract profits and move on, we're rooted here. Every dollar Robin Hood Homes earns flows back to Strategic Solutions, Inc. and is redeployed into Sonoma County — grants, housing projects, and community resources.",
+  },
+  {
+    n: 'iv',
+    title: 'The 30-Year Lock.',
+    body: 'Every home we acquire through SB 1079 is deed-restricted as affordable housing for 30 years — ensuring that even individual purchases leave a permanent mark, while we build toward something larger.',
+  },
+];
+---
+<section class="section section--soft" id="why">
+  <div class="container">
+    <div class="eyebrow">01 · Why we do it</div>
+    <h2 class="why__statement">
+      <span class="line">Same game.</span>
+      <span class="line it">Different outcome.</span>
+    </h2>
+    <p class="lead" style="max-width: 64ch; margin-bottom: 64px;">
+      Our parent's a nonprofit. We're not. Robin Hood Homes is a for-profit LLC, wholly
+      owned by Strategic Solutions, Inc. &mdash; built to acquire and flip post-foreclosure
+      properties the same way investors do. The difference is where the money lands.
+      The flip is the means. <em>The mission is the destination.</em>
+    </p>
+
+    <div class="why__pillars">
+      {PILLARS.map((p) => (
+        <div class="pillar">
+          <div class="pillar__num">{p.n}</div>
+          <div>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

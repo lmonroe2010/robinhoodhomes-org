@@ -1,0 +1,12 @@
+# Netlify build config for Robin Hood Homes — a wholly-owned subsidiary of
+# Strategic Solutions, Inc. Astro outputs static HTML to `dist/`. Contact
+# form submissions are handled by Netlify Forms (zero-config; configured
+# inline on the form in src/components/Contact.astro).
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Astro 6 requires Node >= 22.12 (see package.json engines field).
+  NODE_VERSION = "22"
