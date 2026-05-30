@@ -1,14 +1,17 @@
 /* =========================================================================
    Robin Hood Homes — site styles
-   Layered atop tokens.css (SSI design system). The brand palette is
-   Sherwood: deep forest + aged gold + cream.
+   Layered atop tokens.css (SSI design system). RHH is the bold subsidiary —
+   forest + gold + cream by default; manifesto + sibling palettes via Tweaks.
    ========================================================================= */
 
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 
 :root {
-  /* ===== RHH PALETTE — Sherwood ========================================= */
+  /* ===== RHH PALETTES =====================================================
+     Default is "sherwood". The Tweaks panel re-defines these via [data-palette].
+     ====================================================================== */
 
+  /* Sherwood — deep forest, aged gold, cream */
   --rhh-bg:        #F4EFE6;   /* cream surface */
   --rhh-bg-soft:   #ECE5D5;   /* slightly darker cream divider band */
   --rhh-ink:       #14201A;   /* near-black forest, body text */
@@ -43,6 +46,48 @@
   --container: 1240px;
   --container-narrow: 880px;
   --nav-h: 76px;
+}
+
+/* ---------- MANIFESTO palette ---------- */
+[data-palette="manifesto"] {
+  --rhh-bg:        #F4EFE6;
+  --rhh-bg-soft:   #EAE2D2;
+  --rhh-ink:       #0C0B07;
+  --rhh-ink-soft:  #2E2C24;
+  --rhh-ink-mute:  #6A6655;
+  --rhh-line:      rgba(12, 11, 7, 0.12);
+
+  --rhh-deep:      #0C0B07;
+  --rhh-deep-2:    #060503;
+  --rhh-deep-3:    #000000;
+  --rhh-on-deep:   #F4EFE6;
+  --rhh-on-deep-mute: #B3AE99;
+
+  --rhh-gold:      #D8A93C;
+  --rhh-gold-soft: #ECC25E;
+  --rhh-gold-deep: #9C7820;
+  --rhh-gold-tint: rgba(216, 169, 60, 0.16);
+}
+
+/* ---------- SIBLING palette (closer to parent SSI) ---------- */
+[data-palette="sibling"] {
+  --rhh-bg:        #FBF8F2;
+  --rhh-bg-soft:   #F1ECE0;
+  --rhh-ink:       #14223E;
+  --rhh-ink-soft:  #2C3B58;
+  --rhh-ink-mute:  #6B7587;
+  --rhh-line:      rgba(20, 34, 62, 0.12);
+
+  --rhh-deep:      #1B3A6B;
+  --rhh-deep-2:    #142B51;
+  --rhh-deep-3:    #0E1F3B;
+  --rhh-on-deep:   #FBF8F2;
+  --rhh-on-deep-mute: #A8B8CF;
+
+  --rhh-gold:      #C49628;
+  --rhh-gold-soft: #DAB148;
+  --rhh-gold-deep: #8A6818;
+  --rhh-gold-tint: rgba(196, 150, 40, 0.14);
 }
 
 /* ============================================================================
@@ -708,6 +753,14 @@ p { margin: 0 0 16px; color: var(--rhh-ink-soft); text-wrap: pretty; }
   border-bottom: 1px solid var(--rhh-line);
   overflow: hidden;
 }
+.pcard__photo-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
 .pcard__photo-placeholder {
   position: absolute;
   inset: 0;
@@ -719,7 +772,7 @@ p { margin: 0 0 16px; color: var(--rhh-ink-soft); text-wrap: pretty; }
   letter-spacing: 0.18em;
   font-size: 12px;
   font-weight: 500;
-  color: var(--rhh-deep);
+  color: var(--rhh-ink-mute);
 }
 
 .pcard__status {

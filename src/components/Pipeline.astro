@@ -1,7 +1,7 @@
 ---
-// Property pipeline — 16 SB 1079 acquisitions across California. Photos use
-// a diagonal-stripe placeholder until real photography is added. The filter
-// chips run client-side via a tiny inline script (no framework runtime).
+// Property pipeline — 16 SB 1079 acquisitions across California. Property
+// photos served from /assets/properties/; placeholder shown when none available.
+// Filter chips run client-side via a tiny inline script (no framework runtime).
 type Status = 'active' | 'pending' | 'occupied' | 'construction' | 'dual' | 'rental' | 'suspense';
 
 interface Property {
@@ -10,26 +10,27 @@ interface Property {
   city: string;
   status: Status;
   redfin?: string;
+  photo?: string;
   detail: string;
 }
 
 const PROPERTIES: Property[] = [
-  { id: 1,  addr: '2586 Willow St',         city: 'Nicolaus',      status: 'active',       redfin: 'https://www.redfin.com/CA/Nicolaus/2586-Willow-St-95659/home/123435308', detail: 'A country gem.' },
-  { id: 2,  addr: '1662 Glazier Dr',        city: 'Concord',       status: 'pending',      detail: 'Meticulous remodel and the pride of the neighborhood.' },
+  { id: 1,  addr: '2586 Willow St',         city: 'Nicolaus',      status: 'active',       redfin: 'https://www.redfin.com/CA/Nicolaus/2586-Willow-St-95659/home/123435308', photo: '/assets/properties/prop-1.webp',  detail: 'A country gem.' },
+  { id: 2,  addr: '1662 Glazier Dr',        city: 'Concord',       status: 'pending',      photo: '/assets/properties/prop-2.webp',  detail: 'Meticulous remodel and the pride of the neighborhood.' },
   { id: 3,  addr: '1511 Russell St',        city: 'Berkeley',      status: 'occupied',     detail: 'Occupied — waiting for access.' },
-  { id: 4,  addr: '4620 Wendlis Rd',        city: 'Forest Ranch',  status: 'pending',      detail: 'Country home with solar, a pool, and unlimited potential.' },
-  { id: 5,  addr: '648 Thornton Ave',       city: 'San Francisco', status: 'active',       redfin: 'https://www.redfin.com/CA/San-Francisco/648-Thornton-Ave-94124/home/994794', detail: 'Classically chic SF stunner with a separate studio unit.' },
+  { id: 4,  addr: '4620 Wendlis Rd',        city: 'Forest Ranch',  status: 'pending',      photo: '/assets/properties/prop-4.webp',  detail: 'Country home with solar, a pool, and unlimited potential.' },
+  { id: 5,  addr: '648 Thornton Ave',       city: 'San Francisco', status: 'active',       redfin: 'https://www.redfin.com/CA/San-Francisco/648-Thornton-Ave-94124/home/994794', photo: '/assets/properties/prop-5.webp',  detail: 'Classically chic SF stunner with a separate studio unit.' },
   { id: 6,  addr: '1444 9th Ave',           city: 'Oakland',       status: 'occupied',     detail: 'Occupied — waiting for access.' },
-  { id: 7,  addr: '375 Senter Rd',          city: 'San Jose',      status: 'construction', detail: 'Launching June 2026 — a full studs-out remodel.' },
-  { id: 8,  addr: '80628 Camino San Lucas', city: 'Indio',         status: 'occupied',     detail: 'Occupied — waiting for access.' },
-  { id: 9,  addr: '15315 Pearl Ct',         city: 'Pioneer',       status: 'construction', detail: 'In construction — launching late June 2026.' },
+  { id: 7,  addr: '375 Senter Rd',          city: 'San Jose',      status: 'construction', photo: '/assets/properties/prop-7.webp',  detail: 'Launching June 2026 — a full studs-out remodel.' },
+  { id: 8,  addr: '80628 Camino San Lucas', city: 'Indio',         status: 'occupied',     photo: '/assets/properties/prop-8.webp',  detail: 'Occupied — waiting for access.' },
+  { id: 9,  addr: '15315 Pearl Ct',         city: 'Pioneer',       status: 'construction', photo: '/assets/properties/prop-9.webp',  detail: 'In construction — launching late June 2026.' },
   { id: 10, addr: '1998 Calaveras Dr',      city: 'Bay Point',     status: 'occupied',     detail: 'Occupied — waiting for access.' },
   { id: 11, addr: '1222 D St',              city: 'Ramona',        status: 'occupied',     detail: 'Occupied — waiting for access.' },
   { id: 12, addr: '1210 W Milling St',      city: 'Lancaster',     status: 'occupied',     detail: 'Occupied — waiting for access.' },
   { id: 13, addr: '7927 MacArthur Blvd',    city: 'Oakland',       status: 'pending',      detail: 'Selling to prior long-term tenants.' },
-  { id: 14, addr: '1041 Lettia Rd',         city: 'San Pablo',     status: 'rental',       detail: 'Portfolio property — long-term rental with tenants in place.' },
-  { id: 15, addr: '85 La Encinal',          city: 'Orinda',        status: 'active',       redfin: 'https://www.redfin.com/CA/Orinda/85-La-Encinal-94563/home/1970758', detail: 'Top-of-the-world views and top-rated schools.' },
-  { id: 16, addr: '4609 Ranch Pl',          city: 'Antioch',       status: 'active',       detail: 'Barely-lived-in new construction with a huge yard.' },
+  { id: 14, addr: '1041 Lettia Rd',         city: 'San Pablo',     status: 'rental',       photo: '/assets/properties/prop-14.webp', detail: 'Portfolio property — long-term rental with tenants in place.' },
+  { id: 15, addr: '85 La Encinal',          city: 'Orinda',        status: 'active',       redfin: 'https://www.redfin.com/CA/Orinda/85-La-Encinal-94563/home/1970758', photo: '/assets/properties/prop-15.webp', detail: 'Top-of-the-world views and top-rated schools.' },
+  { id: 16, addr: '4609 Ranch Pl',          city: 'Antioch',       status: 'active',       photo: '/assets/properties/prop-16.webp', detail: 'Barely-lived-in new construction with a huge yard.' },
 ];
 
 const STATUS_LABEL: Record<Status, string> = {
@@ -123,7 +124,10 @@ const redfinUrl = (p: Property): string =>
                 <span class="pdot" aria-hidden="true"></span>
                 <span>{STATUS_LABEL[p.status]}</span>
               </div>
-              <div class="pcard__photo-placeholder">Coming Soon</div>
+              {p.photo
+                ? <img src={p.photo} alt={p.addr + ', ' + p.city} class="pcard__photo-img" loading="lazy" />
+                : <div class="pcard__photo-placeholder">Coming Soon</div>
+              }
               {isActive && (
                 <a
                   class="pcard__redfin"
