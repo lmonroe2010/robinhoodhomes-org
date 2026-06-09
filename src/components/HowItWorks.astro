@@ -1,71 +1,88 @@
 ---
-// "How it works" — SB 1079 explainer card + 5-step acquisition process.
-const STEPS = [
-  {
-    n: '01',
-    title: 'We monitor foreclosure auctions.',
-    body: 'Our team tracks trustee sale notices and auction results across California, identifying properties where we can intervene through SB 1079.',
-  },
-  {
-    n: '02',
-    title: 'We exercise our SB 1079 rights.',
-    body: "After a property sells at auction, Robin Hood Homes has 15 days to submit a Notice of Intent. From there, 30 more days to deliver a cashier's check exceeding the winning bid — 45 days total.",
-  },
-  {
-    n: '03',
-    title: 'We record a deed restriction.',
-    body: 'Every home is recorded with a 30-year affordable housing covenant — legally binding the property to affordable use for three decades, regardless of future ownership.',
-  },
-  {
-    n: '04',
-    title: 'We fix what needs fixing.',
-    body: 'Some need a $200,000+ gut renovation. Others just need a for-sale sign in the yard. Either way, when work needs doing we hire local — putting good people to work fixing up their own communities.',
-  },
-  {
-    n: '05',
-    title: 'Families move in. Profits cycle back.',
-    body: 'We sell or rent to qualified low- and moderate-income households. Any proceeds return to Strategic Solutions, Inc. and are reinvested into Sonoma County grants, housing, and community programs.',
-  },
-];
 ---
-<section class="section section--dark" id="how">
-  <div class="container">
-    <div class="how__top">
-      <div class="how__intro">
-        <div class="eyebrow">02 · How it works</div>
-        <h2>From foreclosure<br />to <span class="accent">forever home.</span></h2>
-        <p>
-          California's SB 1079 — the Homes for Homeowners, Not Corporations Act — created
-          a powerful tool for mission-driven housing buyers. We use it to redirect foreclosed
-          homes away from institutional investors and into the hands of families who need them.
-        </p>
+<section id="story">
+  <div class="story">
+    <div class="story__grid">
+      <div class="story__photo-wrap">
+        <div class="story__photo" role="img" aria-label="Cozy living room with fireplace in a Kendrick Realty represented home"></div>
+        <div class="story__badge">
+          <div class="story__badge-year">Est. 2016</div>
+          <div class="story__badge-line">Independently owned, deliberately boutique.</div>
+        </div>
       </div>
-
-      <div class="window">
-        <div class="window__head">
-          <span class="window__tag">SB 1079 · Signed 2020</span>
-          <span class="window__law">CA Civ. Code §2924m</span>
-        </div>
-        <div class="window__days tabular">
-          45<small>days from auction.<br /><span style="color:var(--rhh-on-deep)">15 to file. 30 to fund.</span></small>
-        </div>
-        <div class="window__progress" aria-hidden="true"></div>
-        <p class="window__caption">
-          Signed in 2020 to curb bulk-buying of foreclosed homes by institutional investors —
-          giving mission-driven housing entities like Robin Hood Homes a post-auction window
-          to match the winning bid and take the property instead.
+      <div class="story__text">
+        <div class="kr-eyebrow">Our story</div>
+        <h2>A brokerage built on one simple truth</h2>
+        <p>
+          Kendrick Realty began with a belief that buying or selling a home should feel personal — never
+          transactional. We stayed small on purpose, so that every client works directly with someone who
+          knows their name, their goals, and their timeline.
         </p>
+        <p>
+          That focus is what lets us be a genuine guide. We've walked the path enough times to anticipate
+          the next turn, smooth the rough patches, and keep you confident from the first conversation to the
+          keys in your hand.
+        </p>
+        <div class="story__bullets">
+          <div class="story__bullet">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Bay Area · Sacramento · Central Valley
+          </div>
+          <div class="story__bullet">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            Discreet, full-service representation
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="steps">
-      {STEPS.map((s) => (
-        <div class="step">
-          <div class="step__num">{s.n}</div>
-          <h4 class="step__title">{s.title}</h4>
-          <p class="step__body">{s.body}</p>
+<section id="approach">
+  <div class="approach">
+    <div class="section-header">
+      <div class="kr-eyebrow">How we work</div>
+      <h2>The calm in the middle of a big decision</h2>
+      <p>Buying or selling a home is rarely just a transaction — it's a chapter of your life. Our role is to make it feel considered, unhurried, and entirely in good hands.</p>
+    </div>
+    <div class="approach__cards">
+      <div class="kr-card kr-hover approach-card">
+        <div class="approach-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+          </svg>
         </div>
-      ))}
+        <h3>A fluent guide</h3>
+        <p>We know every turn of the process by heart, so you never feel lost. We translate the paperwork, the timelines, and the decisions into plain language — and stay a step ahead for you.</p>
+      </div>
+      <div class="kr-card kr-hover approach-card">
+        <div class="approach-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <h3>Comfort at every price point</h3>
+        <p>First home or fifth, three hundred thousand or several million — the care, attention, and discretion are exactly the same. You are never just a transaction here.</p>
+      </div>
+      <div class="kr-card kr-hover approach-card">
+        <div class="approach-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="6 3 18 3 22 9 12 22 2 9 6 3"/><line x1="12" y1="22" x2="12" y2="9"/><polyline points="2 9 12 9 22 9"/>
+          </svg>
+        </div>
+        <h3>A boutique experience</h3>
+        <p>Small by design. You work with people who know your name, answer their own phone, and treat your move as if it were their own.</p>
+      </div>
     </div>
   </div>
 </section>

@@ -1,87 +1,211 @@
 ---
-// Contact form — submissions handled by Netlify Forms.
-// The form is detected at deploy time by Netlify's build bot from the static
-// HTML output (data-netlify + name="contact"). The honeypot field traps bots.
-// On submit, Netlify redirects to /thank-you/.
 ---
-<section class="section section--dark" id="contact">
-  <div class="container">
-    <div class="contact">
-      <div class="contact__side">
-        <div class="eyebrow">05 · Get in touch</div>
-        <h2>Send us a <span class="accent">message.</span></h2>
+<section id="reviews">
+  <div class="testimonials">
+    <div class="testimonials__header">
+      <div class="kr-eyebrow">Client stories</div>
+      <h2>Trusted with the biggest decisions</h2>
+      <div class="testimonials__rating">
+        <span class="testimonials__stars" aria-label="5 stars">
+          {[0,1,2,3,4].map(() => (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          ))}
+        </span>
+        4.8 average from 49 client reviews
+      </div>
+    </div>
+    <div class="testimonials__cards">
 
-        <div class="contact__info">
-          <div class="contact__info-item">
-            <span class="label-mono">Primary contact</span>
-            <span>Luke Monroe — Founder &amp; President</span>
-          </div>
-          <div class="contact__info-item">
-            <span class="label-mono">Phone</span>
-            <a href="tel:7073313121">707-331-3121</a>
-          </div>
-          <div class="contact__info-item">
-            <span class="label-mono">Mailing address</span>
-            <span>12697 Graton Rd., Sebastopol, CA 95472</span>
-          </div>
-          <div class="contact__info-item">
-            <span class="label-mono">Parent organization</span>
-            <a href="https://castrategicsolutions.org" target="_blank" rel="noreferrer">
-              CaStrategicSolutions.org ↗
-            </a>
+      <div class="kr-card testimonial-card">
+        <div class="testimonial-card__stars" aria-label="5 stars">
+          {[0,1,2,3,4].map(() => (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          ))}
+        </div>
+        <p class="testimonial-card__quote">
+          "There aren't enough positive adjectives to describe my experience with Pamela at Kendrick Realty. With little to no notice, she quickly stepped in and got our offer accepted immediately!"
+        </p>
+        <div class="testimonial-card__person">
+          <div class="testimonial-card__avatar" aria-hidden="true">B</div>
+          <div>
+            <div class="testimonial-card__name">Brittany Hines</div>
+            <div class="testimonial-card__role">Buyer</div>
           </div>
         </div>
       </div>
 
-      <form
-        class="form"
-        name="contact"
-        method="POST"
-        action="/thank-you/"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-      >
-        <input type="hidden" name="form-name" value="contact" />
-        <p hidden>
-          <label>Don't fill this out: <input name="bot-field" /></label>
+      <div class="kr-card testimonial-card">
+        <div class="testimonial-card__stars" aria-label="5 stars">
+          {[0,1,2,3,4].map(() => (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          ))}
+        </div>
+        <p class="testimonial-card__quote">
+          "Taryn and Mary had our backs throughout the entire process. As first-time homebuyers we had so many questions, and Taryn always reminded us, 'ask me anything.'"
         </p>
-
-        <div class="form__row--split">
+        <div class="testimonial-card__person">
+          <div class="testimonial-card__avatar" aria-hidden="true">J</div>
           <div>
-            <label for="f-name">Name</label>
-            <input id="f-name" name="name" type="text" required placeholder="Jane Diaz" />
-          </div>
-          <div>
-            <label for="f-email">Email</label>
-            <input id="f-email" name="email" type="email" required placeholder="jane@example.org" />
+            <div class="testimonial-card__name">José González</div>
+            <div class="testimonial-card__role">First-time buyers</div>
           </div>
         </div>
+      </div>
 
-        <div class="form__row">
-          <label for="f-topic">I'm interested in…</label>
-          <select id="f-topic" name="topic" required>
-            <option value="">Select a topic</option>
-            <option value="buying">Buying a property</option>
-            <option value="partner">Partnership / collaboration</option>
-            <option value="sb1079">Learning about SB 1079</option>
-            <option value="grants">Grants &amp; community investment</option>
-            <option value="lead">Property lead (foreclosure tip)</option>
-            <option value="other">Other</option>
-          </select>
+      <div class="kr-card testimonial-card">
+        <div class="testimonial-card__stars" aria-label="5 stars">
+          {[0,1,2,3,4].map(() => (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          ))}
         </div>
+        <p class="testimonial-card__quote">
+          "Our Realtor, Robert Nongauza, is none other than outstanding. From the first contact — 'I'm going to find your forever home' — to handing us the keys, Robert was with us 150%."
+        </p>
+        <div class="testimonial-card__person">
+          <div class="testimonial-card__avatar" aria-hidden="true">C</div>
+          <div>
+            <div class="testimonial-card__name">Cindy Thwaites-Smith</div>
+            <div class="testimonial-card__role">Buyer</div>
+          </div>
+        </div>
+      </div>
 
-        <div class="form__row">
-          <label for="f-msg">Message</label>
-          <textarea id="f-msg" name="message" rows="4" required placeholder="Tell us what you're working on."></textarea>
-        </div>
-
-        <div class="form__actions">
-          <span class="form__note">Luke will be in touch shortly.</span>
-          <button type="submit" class="btn btn--gold">
-            Send message <span class="arrow">→</span>
-          </button>
-        </div>
-      </form>
     </div>
   </div>
 </section>
+
+<section id="contact">
+  <div class="contact-band">
+    <div class="contact-band__inner">
+      <div class="contact-info">
+        <div class="kr-eyebrow">Get in touch</div>
+        <h2>Talk to a real person</h2>
+        <p>Tell us a little about what you're looking for. A Kendrick Realtor will reach out — usually the same day.</p>
+        <div class="contact-info__items">
+          <div class="contact-info__item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.18 2 2 0 0 1 3.64 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a href="tel:7073313121">707-331-3121</a>
+          </div>
+          <div class="contact-info__item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a href="mailto:Luke@KendrickRealtyInc.com">Luke@KendrickRealtyInc.com</a>
+          </div>
+          <div class="contact-info__item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>12697 Graton Rd, Sebastopol, CA 95472</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kr-card contact-form-card">
+        <form
+          id="contact-form"
+          name="contact"
+          method="POST"
+          action="/thank-you/"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          novalidate
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="contact-form__honeypot">
+            <label>Do not fill this field: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </div>
+
+          <div class="contact-form__fields">
+
+            <div>
+              <label class="contact-form__label" for="cf-name">Full name</label>
+              <div class="kr-input">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+                <input id="cf-name" name="name" type="text" placeholder="Jordan Avery" required />
+              </div>
+            </div>
+
+            <div class="contact-form__row-2">
+              <div>
+                <label class="contact-form__label" for="cf-email">Email</label>
+                <div class="kr-input">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  <input id="cf-email" name="email" type="email" placeholder="you@email.com" required />
+                </div>
+              </div>
+              <div>
+                <label class="contact-form__label" for="cf-phone">Phone</label>
+                <div class="kr-input">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.18 2 2 0 0 1 3.64 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  <input id="cf-phone" name="phone" type="tel" placeholder="(707) 000-0000" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="contact-form__label">I want to</label>
+              <input type="hidden" name="intent" id="cf-intent" value="Buy" />
+              <div class="contact-form__intent" role="group" aria-label="I want to">
+                <button type="button" class="intent-btn active" data-intent="Buy">Buy</button>
+                <button type="button" class="intent-btn" data-intent="Sell">Sell</button>
+                <button type="button" class="intent-btn" data-intent="Both">Both</button>
+              </div>
+            </div>
+
+            <button type="submit" class="kr-btn-primary contact-form__submit">
+              Request a call
+            </button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Intent segmented control
+  const intentInput = document.getElementById('cf-intent') as HTMLInputElement | null;
+  document.querySelectorAll<HTMLButtonElement>('.intent-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.intent-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (intentInput) intentInput.value = btn.dataset.intent ?? '';
+    });
+  });
+
+  // Front-end validation before Netlify takes over
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', e => {
+    const name  = (form.querySelector('#cf-name')  as HTMLInputElement)?.value.trim();
+    const email = (form.querySelector('#cf-email') as HTMLInputElement)?.value.trim();
+    if (!name || !email) {
+      e.preventDefault();
+      if (!name)  form.querySelector<HTMLInputElement>('#cf-name')?.focus();
+      else        form.querySelector<HTMLInputElement>('#cf-email')?.focus();
+    }
+  });
+</script>

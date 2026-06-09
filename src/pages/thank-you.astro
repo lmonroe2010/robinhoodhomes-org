@@ -1,30 +1,31 @@
 ---
-// Post-submit destination for the Netlify Forms contact form.
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 <Base
-  title="Message received — Robin Hood Homes"
-  description="Thanks — Luke will be in touch shortly."
-  url="https://robinhoodhomes.org/thank-you/"
+  title="Message received — Kendrick Realty"
+  description="Thanks — a Kendrick Realtor will be in touch shortly."
+  url="https://kendrickrealtyinc.com/thank-you/"
 >
   <Nav />
   <main>
-    <section class="section section--soft" style="padding-top: 96px;">
-      <div class="container container--narrow">
-        <div class="eyebrow">Message received</div>
-        <h1>Thanks — Luke will be in touch shortly.</h1>
-        <p class="lead">
-          We've received your message. If your inquiry concerns an active match-window
-          property, please call <a href="tel:7073313121">707-331-3121</a> — clocks don't wait.
-        </p>
-        <div style="margin-top: 32px;">
-          <a class="btn btn--primary" href="/">
-            Back to the site <span class="arrow">→</span>
-          </a>
-        </div>
+    <section style="padding: 96px 32px 120px; max-width: 680px; margin: 0 auto; text-align: center;">
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--success-bg);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+          stroke="var(--success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
       </div>
+      <div class="kr-eyebrow" style="margin-bottom:12px;">Message received</div>
+      <h1 style="font-size:clamp(28px,4vw,42px);margin-bottom:16px;">Thanks — we'll be in touch soon.</h1>
+      <p style="font-size:18px;color:var(--fg-muted);max-width:480px;margin:0 auto 32px;">
+        A Kendrick Realtor will reach out — usually the same day. If it's urgent,
+        call <a href="tel:7073313121" style="color:var(--kr-blue);font-weight:600;">707-331-3121</a>.
+      </p>
+      <a href="/" class="kr-btn-primary" style="font-size:16px;padding:14px 28px;">
+        Back to the site
+      </a>
     </section>
   </main>
   <Footer />

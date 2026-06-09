@@ -1,42 +1,40 @@
 ---
-// Follow the Money — the 50/25/25 reinvestment story.
-const ALLOCATION = [
-  { pct: 50, label: 'Community Grants',   sub: 'to local Sonoma County nonprofits' },
-  { pct: 25, label: 'Housing Investment', sub: '↳ this work' },
-  { pct: 25, label: 'Grant Writing',      sub: 'full-time staff position' },
+const photos = [
+  { src: 'aerial-la-encinal.jpg',   alt: 'Aerial view of a Kendrick Realty listing in La Encinal',   size: 'large' },
+  { src: 'living-staged-white.jpg', alt: 'Staged white living room',                                  size: 'std' },
+  { src: 'kitchen-white-range.jpg', alt: 'White kitchen with range',                                  size: 'std' },
+  { src: 'bath-marble-spa.jpg',     alt: 'Marble spa bathroom',                                       size: 'tall' },
+  { src: 'kitchen-cooktop-dining.jpg', alt: 'Kitchen cooktop with dining area',                       size: 'std' },
+  { src: 'backyard-pool.jpg',       alt: 'Backyard pool and two-story home',                          size: 'wide' },
+  { src: 'living-entry-gray.jpg',   alt: 'Living room entry in gray tones',                           size: 'std' },
+  { src: 'kitchen-marble-bw.jpg',   alt: 'Kitchen with marble counters',                              size: 'std' },
+  { src: 'dining-view.jpg',         alt: 'Dining room with sweeping hilltop view',                    size: 'large' },
+  { src: 'bath-subway-tub.jpg',     alt: 'Subway tile bathroom with soaking tub',                     size: 'std' },
+  { src: 'kitchen-arch-island.jpg', alt: 'Kitchen with arched island',                                size: 'std' },
+  { src: 'bath-marble.jpg',         alt: 'Marble bathroom',                                           size: 'tall' },
+  { src: 'kitchen-subway.jpg',      alt: 'Subway tile kitchen',                                       size: 'std' },
+  { src: 'exterior-yellow-yard.jpg',alt: 'Exterior home with yellow yard and garden',                 size: 'wide' },
+  { src: 'living-fireplace.jpg',    alt: 'Living room with fireplace',                                size: 'std' },
+  { src: 'exterior-glazier.jpg',    alt: 'Modern glazier exterior home',                              size: 'std' },
+  { src: 'backyard-dusk.jpg',       alt: 'Twilight backyard at dusk',                                 size: 'large' },
 ];
 ---
-<section class="section section--soft" id="money">
-  <div class="container">
-    <div class="money">
-      <div class="money__copy">
-        <div class="eyebrow">04 · Follow the money</div>
-        <h2>Every dollar we earn<br />goes <span class="accent">back home.</span></h2>
-        <p class="lead" style="margin-top: 24px;">
-          Robin Hood Homes, LLC is a wholly-owned subsidiary of Strategic Solutions, Inc.,
-          a California nonprofit based in Sebastopol. Every dollar of operating surplus
-          flows back to Strategic Solutions and is redeployed into West Sonoma County
-          through grants, housing investment, and a dedicated grant-writing position.
-        </p>
-        <div class="flow__cycle">
-          The flip is the means. <strong>The mission is the destination.</strong>
-        </div>
-        <div style="margin-top: 24px;">
-          <a href="https://castrategicsolutions.org" target="_blank" rel="noreferrer" class="btn btn--outline">
-            Visit CaStrategicSolutions.org ↗
-          </a>
-        </div>
+<section id="homes">
+  <div class="showcase">
+    <div class="showcase__inner">
+      <div class="section-header">
+        <div class="kr-eyebrow">Our work</div>
+        <h2>Homes we've had the privilege to represent</h2>
+        <p>Across the Bay Area, Sacramento, and the Central Valley — every one guided with the same care.</p>
       </div>
-
-      <div class="flow">
-        {ALLOCATION.map((a) => (
-          <div class="flow__row">
-            <div class="flow__pct tabular">{a.pct}<span style="font-size:40px">%</span></div>
-            <div class="flow__bar" style={`width: ${a.pct === 50 ? '100%' : '70%'}`}>
-              {a.label}
-              <span class="flow__sub">{a.sub}</span>
-            </div>
-          </div>
+      <div class="showcase__mosaic">
+        {photos.map(({ src, alt, size }) => (
+          <div
+            class={`showcase-tile${size === 'large' ? ' showcase-tile--large' : size === 'tall' ? ' showcase-tile--tall' : size === 'wide' ? ' showcase-tile--wide' : ''}`}
+            style={`background-image:url('/assets/photos/${src}');`}
+            role="img"
+            aria-label={alt}
+          ></div>
         ))}
       </div>
     </div>

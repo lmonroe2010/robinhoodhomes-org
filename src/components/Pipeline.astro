@@ -1,189 +1,72 @@
 ---
-// Property pipeline — 16 SB 1079 acquisitions across California. Photos use
-// a diagonal-stripe placeholder until real photography is added. The filter
-// chips run client-side via a tiny inline script (no framework runtime).
-type Status = 'active' | 'pending' | 'occupied' | 'construction' | 'dual' | 'rental' | 'suspense';
-
-interface Property {
-  id: number;
-  addr: string;
-  city: string;
-  status: Status;
-  redfin?: string;
-  detail: string;
-}
-
-const PROPERTIES: Property[] = [
-  { id: 1,  addr: '2586 Willow St',         city: 'Nicolaus',      status: 'active',       redfin: 'https://www.redfin.com/CA/Nicolaus/2586-Willow-St-95659/home/123435308', detail: 'A country gem.' },
-  { id: 2,  addr: '1662 Glazier Dr',        city: 'Concord',       status: 'pending',      detail: 'Meticulous remodel and the pride of the neighborhood.' },
-  { id: 3,  addr: '1511 Russell St',        city: 'Berkeley',      status: 'occupied',     detail: 'Occupied — waiting for access.' },
-  { id: 4,  addr: '4620 Wendlis Rd',        city: 'Forest Ranch',  status: 'pending',      detail: 'Country home with solar, a pool, and unlimited potential.' },
-  { id: 5,  addr: '648 Thornton Ave',       city: 'San Francisco', status: 'active',       redfin: 'https://www.redfin.com/CA/San-Francisco/648-Thornton-Ave-94124/home/994794', detail: 'Classically chic SF stunner with a separate studio unit.' },
-  { id: 6,  addr: '1444 9th Ave',           city: 'Oakland',       status: 'occupied',     detail: 'Occupied — waiting for access.' },
-  { id: 7,  addr: '375 Senter Rd',          city: 'San Jose',      status: 'construction', detail: 'Launching June 2026 — a full studs-out remodel.' },
-  { id: 8,  addr: '80628 Camino San Lucas', city: 'Indio',         status: 'occupied',     detail: 'Occupied — waiting for access.' },
-  { id: 9,  addr: '15315 Pearl Ct',         city: 'Pioneer',       status: 'construction', detail: 'In construction — launching late June 2026.' },
-  { id: 10, addr: '1998 Calaveras Dr',      city: 'Bay Point',     status: 'occupied',     detail: 'Occupied — waiting for access.' },
-  { id: 11, addr: '1222 D St',              city: 'Ramona',        status: 'occupied',     detail: 'Occupied — waiting for access.' },
-  { id: 12, addr: '1210 W Milling St',      city: 'Lancaster',     status: 'occupied',     detail: 'Occupied — waiting for access.' },
-  { id: 13, addr: '7927 MacArthur Blvd',    city: 'Oakland',       status: 'pending',      detail: 'Selling to prior long-term tenants.' },
-  { id: 14, addr: '1041 Lettia Rd',         city: 'San Pablo',     status: 'rental',       detail: 'Portfolio property — long-term rental with tenants in place.' },
-  { id: 15, addr: '85 La Encinal',          city: 'Orinda',        status: 'active',       redfin: 'https://www.redfin.com/CA/Orinda/85-La-Encinal-94563/home/1970758', detail: 'Top-of-the-world views and top-rated schools.' },
-  { id: 16, addr: '4609 Ranch Pl',          city: 'Antioch',       status: 'active',       detail: 'Barely-lived-in new construction with a huge yard.' },
-];
-
-const STATUS_LABEL: Record<Status, string> = {
-  active:       'Active',
-  pending:      'Pending',
-  construction: 'In Construction',
-  occupied:     'Occupied',
-  dual:         'Occupied · Dual Track',
-  rental:       'Rental',
-  suspense:     'Suspense',
-};
-
-const FILTERS: { key: 'all' | Status; label: string }[] = [
-  { key: 'all',          label: 'All' },
-  { key: 'active',       label: 'Active' },
-  { key: 'pending',      label: 'Pending' },
-  { key: 'construction', label: 'In construction' },
-  { key: 'occupied',     label: 'Occupied' },
-  { key: 'rental',       label: 'Rental' },
-  { key: 'suspense',     label: 'Suspense' },
-];
-
-const counts: Record<string, number> = PROPERTIES.reduce(
-  (m, p) => ({ ...m, [p.status]: (m[p.status] || 0) + 1 }),
-  {} as Record<string, number>,
-);
-const uniqCities = new Set(PROPERTIES.map((p) => p.city)).size;
-const activePipelineCount = (counts.construction || 0) + (counts.pending || 0) + (counts.active || 0);
-
-const redfinUrl = (p: Property): string =>
-  p.redfin ||
-  'https://www.redfin.com/?searchQueryText=' + encodeURIComponent(p.addr + ', ' + p.city + ', CA');
 ---
-<section class="section" id="pipeline">
-  <div class="container">
-    <div class="pipeline__head">
-      <div>
-        <div class="eyebrow">03 · Our portfolio</div>
-        <h2>Properties &amp; <span class="accent">pipeline.</span></h2>
+<section id="process">
+  <div class="process-band">
+    <div class="process-band__inner">
+      <div class="section-header">
+        <div class="kr-eyebrow">The journey</div>
+        <h2>How a move with us goes</h2>
+        <p>Whether it's your first home or your fifth, the path is the same: considered, transparent, and entirely guided.</p>
       </div>
-      <p class="lead">
-        Every property below has been acquired through California's SB 1079
-        post-foreclosure program. All purchases carry 30-year affordable housing
-        deed restrictions.
-      </p>
-    </div>
+      <div class="process__cards">
 
-    <div class="portfolio-stats">
-      <div class="portfolio-stat">
-        <div class="portfolio-stat__num tabular">{PROPERTIES.length}</div>
-        <div class="portfolio-stat__lbl">Active properties</div>
-      </div>
-      <div class="portfolio-stat">
-        <div class="portfolio-stat__num tabular">{uniqCities}</div>
-        <div class="portfolio-stat__lbl">California cities</div>
-      </div>
-      <div class="portfolio-stat">
-        <div class="portfolio-stat__num tabular">{activePipelineCount}</div>
-        <div class="portfolio-stat__lbl">Active, pending, or in construction</div>
-      </div>
-      <div class="portfolio-stat">
-        <div class="portfolio-stat__num tabular">30<span style="font-size:24px; margin-left:4px; color:var(--rhh-gold)">yr</span></div>
-        <div class="portfolio-stat__lbl">Deed restriction on every property</div>
-      </div>
-    </div>
-
-    <div class="filter-row" data-filter-row>
-      {FILTERS.map((f) => {
-        const n = f.key === 'all' ? PROPERTIES.length : (counts[f.key] || 0);
-        return (
-          <button
-            type="button"
-            class={'filter-chip' + (f.key === 'all' ? ' is-active' : '')}
-            data-filter={f.key}
-          >
-            {f.label}
-            <span class="filter-chip__n tabular">{n}</span>
-          </button>
-        );
-      })}
-    </div>
-
-    <div class="pcards" data-pcards>
-      {PROPERTIES.map((p) => {
-        const isActive = p.status === 'active';
-        const href = redfinUrl(p);
-        return (
-          <article class="pcard" data-status={p.status}>
-            <div class="pcard__photo">
-              <div class={'pcard__status pcard__status--' + p.status}>
-                <span class="pdot" aria-hidden="true"></span>
-                <span>{STATUS_LABEL[p.status]}</span>
-              </div>
-              <div class="pcard__photo-placeholder">Coming Soon</div>
-              {isActive && (
-                <a
-                  class="pcard__redfin"
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={'View ' + p.addr + ' on Redfin'}
-                >
-                  View on Redfin <span class="arrow">↗</span>
-                </a>
-              )}
+        <div class="process-card">
+          <div class="process-card__top">
+            <div class="process-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
             </div>
-            <div class="pcard__body">
-              <div class="pcard__id tabular">{String(p.id).padStart(2, '0')} / {String(PROPERTIES.length).padStart(2, '0')}</div>
-              <h3 class="pcard__addr">{p.addr}</h3>
-              <div class="pcard__city">{p.city}, CA</div>
-              <div class="pcard__detail">{p.detail}</div>
-              {isActive ? (
-                <a class="pcard__cta" href={href} target="_blank" rel="noreferrer">
-                  View listing on Redfin <span class="arrow">↗</span>
-                </a>
-              ) : (
-                <a class="pcard__cta" href="#contact">
-                  Inquire <span class="arrow">→</span>
-                </a>
-              )}
-            </div>
-          </article>
-        );
-      })}
-      <div class="ptable__empty" data-empty hidden style="grid-column: 1 / -1">No properties match this filter right now.</div>
-    </div>
+            <span class="process-card__num">01</span>
+          </div>
+          <h3>A conversation first</h3>
+          <p>We start by listening — your hopes, your constraints, your timeline. No pressure, no obligation. Just a clear, honest read on where you stand.</p>
+        </div>
 
-    <div class="pipeline__cta">
-      <p>Have a property lead, or want to inquire about one of ours?</p>
-      <a href="#contact" class="btn btn--primary">
-        Inquire about a property <span class="arrow">→</span>
-      </a>
+        <div class="process-card">
+          <div class="process-card__top">
+            <div class="process-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+              </svg>
+            </div>
+            <span class="process-card__num">02</span>
+          </div>
+          <h3>A plan made for you</h3>
+          <p>We translate the whole process into a simple, personal roadmap — pricing, prep, timing, financing — so you always know what comes next and why.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-card__top">
+            <div class="process-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+              </svg>
+            </div>
+            <span class="process-card__num">03</span>
+          </div>
+          <h3>Guided every step</h3>
+          <p>From showings and offers to inspections and paperwork, we're a step ahead of each decision, explaining the trade-offs in plain language.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-card__top">
+            <div class="process-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+              </svg>
+            </div>
+            <span class="process-card__num">04</span>
+          </div>
+          <h3>Across the finish line</h3>
+          <p>We handle the details and the negotiations so the closing feels calm. And we stay in touch long after the keys change hands.</p>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
-
-<script>
-  const row = document.querySelector<HTMLElement>('[data-filter-row]');
-  const grid = document.querySelector<HTMLElement>('[data-pcards]');
-  const empty = grid?.querySelector<HTMLElement>('[data-empty]');
-  if (row && grid && empty) {
-    const cards = Array.from(grid.querySelectorAll<HTMLElement>('.pcard'));
-    row.addEventListener('click', (e) => {
-      const target = e.target instanceof Element ? e.target.closest('button[data-filter]') : null;
-      if (!(target instanceof HTMLButtonElement)) return;
-      const filter = target.dataset.filter;
-      row.querySelectorAll('.filter-chip').forEach((b) => b.classList.toggle('is-active', b === target));
-      let shown = 0;
-      cards.forEach((card) => {
-        const match = filter === 'all' || card.dataset.status === filter;
-        card.hidden = !match;
-        if (match) shown += 1;
-      });
-      empty.hidden = shown !== 0;
-    });
-  }
-</script>
