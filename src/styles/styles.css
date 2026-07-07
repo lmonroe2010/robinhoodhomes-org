@@ -708,18 +708,13 @@ p { margin: 0 0 16px; color: var(--rhh-ink-soft); text-wrap: pretty; }
   border-bottom: 1px solid var(--rhh-line);
   overflow: hidden;
 }
-.pcard__photo-placeholder {
+.pcard__photo-img {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--rhh-deep);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .pcard__status {
