@@ -1,7 +1,9 @@
 ---
-// Property pipeline — 16 SB 1079 acquisitions across California. Photos use
-// a diagonal-stripe placeholder until real photography is added. The filter
-// chips run client-side via a tiny inline script (no framework runtime).
+// Property pipeline — 20 SB 1079 acquisitions across California. Card photos
+// come from the Google Street View Static API when GOOGLE_MAPS_API_KEY is set
+// at build time; addresses with no Street View coverage fall back to a
+// diagonal-stripe "Coming Soon" placeholder. The filter chips run client-side
+// via a tiny inline script (no framework runtime).
 type Status = 'active' | 'pending' | 'occupied' | 'construction' | 'dual' | 'rental' | 'suspense';
 
 interface Property {
@@ -66,6 +68,19 @@ const activePipelineCount = (counts.construction || 0) + (counts.pending || 0) +
 const redfinUrl = (p: Property): string =>
   p.redfin ||
   'https://www.redfin.com/?searchQueryText=' + encodeURIComponent(p.addr + ', ' + p.city + ', CA');
+
+// Read at build time (Netlify env var). Kept out of the repo so the key
+// isn't committed. When unset, streetViewUrl() returns null and cards show
+// the placeholder instead of a broken image.
+const MAPS_KEY = process.env.GOOGLE_MAPS_API_KEY ?? import.meta.env.GOOGLE_MAPS_API_KEY ?? '';
+
+const streetViewUrl = (p: Property): string | null => {
+  if (!MAPS_KEY) return null;
+  const location = encodeURIComponent(`${p.addr}, ${p.city}, CA`);
+  // source=outdoor prefers exterior imagery; return_error_code makes
+  // no-coverage locations 404 so the <img> onerror can reveal the placeholder.
+  return `https://maps.googleapis.com/maps/api/streetview?size=800x500&location=${location}&fov=80&pitch=0&source=outdoor&return_error_code=true&key=${MAPS_KEY}`;
+};
 ---
 <section class="section" id="pipeline">
   <div class="container">
@@ -120,6 +135,7 @@ const redfinUrl = (p: Property): string =>
       {PROPERTIES.map((p) => {
         const isActive = p.status === 'active';
         const href = redfinUrl(p);
+        const photo = streetViewUrl(p);
         return (
           <article class="pcard" data-status={p.status}>
             <div class="pcard__photo">
@@ -128,6 +144,17 @@ const redfinUrl = (p: Property): string =>
                 <span>{STATUS_LABEL[p.status]}</span>
               </div>
               <div class="pcard__photo-placeholder">Coming Soon</div>
+              {photo && (
+                <img
+                  class="pcard__photo-img"
+                  src={photo}
+                  alt={'Street view of ' + p.addr + ', ' + p.city}
+                  loading="lazy"
+                  width="800"
+                  height="500"
+                  onerror="this.remove()"
+                />
+              )}
               {isActive && (
                 <a
                   class="pcard__redfin"
