@@ -1,7 +1,7 @@
 ---
-// Property pipeline — 16 SB 1079 acquisitions across California. Property photos
-// are sourced from Google Street View Static API. The filter chips run
-// client-side via a tiny inline script (no framework runtime).
+// Property pipeline — 16 SB 1079 acquisitions across California. Photos use
+// a diagonal-stripe placeholder until real photography is added. The filter
+// chips run client-side via a tiny inline script (no framework runtime).
 type Status = 'active' | 'pending' | 'occupied' | 'construction' | 'dual' | 'rental' | 'suspense';
 
 interface Property {
@@ -62,11 +62,6 @@ const activePipelineCount = (counts.construction || 0) + (counts.pending || 0) +
 const redfinUrl = (p: Property): string =>
   p.redfin ||
   'https://www.redfin.com/?searchQueryText=' + encodeURIComponent(p.addr + ', ' + p.city + ', CA');
-
-const streetViewUrl = (p: Property): string => {
-  const location = encodeURIComponent(`${p.addr}, ${p.city}, CA`);
-  return `https://maps.googleapis.com/maps/api/streetview?size=800x500&location=${location}&fov=80&pitch=0`;
-};
 ---
 <section class="section" id="pipeline">
   <div class="container">
@@ -128,14 +123,7 @@ const streetViewUrl = (p: Property): string => {
                 <span class="pdot" aria-hidden="true"></span>
                 <span>{STATUS_LABEL[p.status]}</span>
               </div>
-              <img
-                class="pcard__photo-img"
-                src={streetViewUrl(p)}
-                alt={'Street view of ' + p.addr + ', ' + p.city}
-                loading="lazy"
-                width="800"
-                height="500"
-              />
+              <div class="pcard__photo-placeholder">Coming Soon</div>
               {isActive && (
                 <a
                   class="pcard__redfin"
